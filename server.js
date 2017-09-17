@@ -1,6 +1,7 @@
 var express = require('express'),
 http = require('http'),
 bodyParser = require('body-parser'),
+cors = require('cors'),
 port = process.env.PORT || 3001;
 
 start();
@@ -8,6 +9,7 @@ start();
 function start(){
     var app = express();
     app.use(bodyParser.json());
+    app.use(cors());
 
     var server = http.Server(app);
     var router = express.Router();
