@@ -1,0 +1,25 @@
+{
+  "name": "shop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wordshaker/shop.git"
+  },
+  "author": "jessicawhite",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wordshaker/shop/issues"
+  },
+  "homepage": "https://github.com/wordshaker/shop#readme",
+  "dependencies": {
+    "express": "^4.15.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
