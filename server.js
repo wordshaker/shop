@@ -1,11 +1,14 @@
 var express = require('express'),
 http = require('http'),
+bodyParser = require('body-parser'),
 port = process.env.PORT || 3000;
 
 start();
 
 function start(){
     var app = express();
+    app.use(bodyParser.json());
+
     var server = http.Server(app);
     var router = express.Router();
 
@@ -41,6 +44,11 @@ function start(){
     var bag = [];
     router.get('/bag', (req, res) => {
         res.json(bag);
+    });
+
+    router.post('/bag', (req, res) => {
+        bag.push(req.body);
+        res.send(bag);
     });
 
     app.use('/api', router);
