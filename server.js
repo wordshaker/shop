@@ -47,7 +47,14 @@ function start(){
     });
 
     router.post('/bag', (req, res) => {
-        bag.push(req.body);
+        var item = bag.find((e) => productHasSku(e, req.body.sku));
+
+        if (item){
+            item.quantity += req.body.quantity;
+        } else {
+            bag.push(req.body);
+        }
+        
         res.send(bag);
     });
 
@@ -56,4 +63,8 @@ function start(){
     server.listen(port, process.env.IP, () => {
         console.log('RESTFUL API STARTED ON ' + port);
     });
+}
+
+function productHasSku(product, sku){
+    return product.sku === sku;
 }
