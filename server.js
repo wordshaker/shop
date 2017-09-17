@@ -1,7 +1,18 @@
 var express = require('express'),
-app = express(), 
+http = require('http'),
 port = process.env.PORT || 3000;
 
-app.listen(port);
+start();
 
-console.log("RESTFUL API STARTED ON " + port)
+function start(){
+    var app = express();
+    var server = http.Server(app);
+
+    app.use('/products', (req, res, next) => {
+        res.status(200).send();
+    })
+
+    server.listen(port, process.env.IP, () => {
+        console.log("RESTFUL API STARTED ON " + port);
+    });
+}
