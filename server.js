@@ -55,8 +55,15 @@ function start(){
             bag.push(req.body);
         }
         
-        res.send(bag);
+        res.json(bag);
     });
+
+    router.route('/bag/:sku')
+        .delete((req, res) => {
+            bag = bag.filter((e) => !productHasSku(e, req.params.sku));
+            
+            res.json(bag);
+        });
 
     app.use('/api', router);
 
